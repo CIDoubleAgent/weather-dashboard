@@ -1,8 +1,9 @@
 body {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0px;
+    padding: 0px;
 }
 
 .header {
-    font-size: 30px;
-    font-weight: 900;
+    background-image: linear-gradient(to right, rgb(71, 71, 241) , rgb(41, 25, 80));
 }
