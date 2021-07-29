@@ -5,5 +5,5 @@ body {
 }
 
 .header {
-    background-image: linear-gradient(to right, rgb(71, 71, 241) , rgb(41, 25, 80));
+    background-image: linear-gradient(to right, rgb(71, 71, 241), indigo);
 }
