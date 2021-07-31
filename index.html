@@ -20,8 +20,8 @@
       <div class="row min-vh-100">
         <div class="col-md-3 bg-light">
           <div class="mb-2 border-bottom border-dark border-3">
-            <label for="searchInput" class="form-label my-1 fs-2 fw-bolder">Search for a City:</label>
-            <input type="text" placeholder="Enter city here" class="form-control mb-2" id="citySearch">
+            <label for="searchInput" class="form-label my-1 fs-3 fw-bolder">Search for a City:</label>
+            <input type="text" placeholder="Enter city here" class="form-control mb-2 border-secondary" id="citySearch">
             <button type="button" class="w-100 btn btn-primary mt-2 mb-3">Search</button>
           </div>
           <div class="w-100 pb-3" id="search-history-container">
@@ -34,10 +34,10 @@
         </div>
         <div class="col-md-9 px-4" id="weather-container">
           <div class="row pt-5" id="error-div">
-            <h2 class="font-weight-bolder" id="error">City not found.</h2>
+            <h2 class="font-weight-bolder fs-3" id="error">City not found</h2>
           </div>
           <div class="row pt-3" id="current-forecast">
-            <div class="col-md-12 border">
+            <div class="col-md-12 border border-secondary">
               <div class="d-flex align-items-center pt-4" id="city-name-container">
                 <h2 class="font-weight-bold" id="city-name"></h2>
                 <div class="weather-image-container">
@@ -54,10 +54,10 @@
           </div>
           <div class="row flex-column pt-3" id="five-day-forecast-container">
           <div class="row no-gutters">
-            <h4 class="font-weight-bolder">5-Day Forecast:</h4>
+            <h4 class="font-weight-bolder row">5-Day Forecast:</h4>
           </div>
           <div class="row no-gutters">
-            <div class="col-lg mx-1 pb-2">
+            <div class="col-lg pb-2">
               <div class="card text-white bg-primary" id="day-1">
                 <div class="card-body">
                   <h5 class="card-title" id="date-1"></h5>
@@ -70,7 +70,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg mx-1 pb-2">
+            <div class="col-lg pb-2">
               <div class="card text-white bg-primary" id="day-2">
                 <div class="card-body">
                   <h5 class="card-title" id="date-2"></h5>
@@ -83,7 +83,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg mx-1 pb-2">
+            <div class="col-lg pb-2">
               <div class="card text-white bg-primary" id="day-3">
                 <div class="card-body">
                   <h5 class="card-title" id="date-3"></h5>
@@ -96,7 +96,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg mx-1 pb-2">
+            <div class="col-lg pb-2">
               <div class="card text-white bg-primary" id="day-4">
                 <div class="card-body">
                   <h5 class="card-title" id="date-4"></h5>
@@ -109,7 +109,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg mx-1 pb-2">
+            <div class="col-lg pb-2">
               <div class="card text-white bg-primary" id="day-5">
                 <div class="card-body">
                   <h5 class="card-title" id="date-5"></h5>
