@@ -14,14 +14,14 @@
     <title>Weather Dashboard</title>
   </head>
   <body>
-    <header class="header fs-2 fw-bolder p-2 text-center text-white">Weather Dashboard</header>
+    <header class="header row-md-12 fs-2 fw-bolder p-2 text-center text-white">Weather Dashboard</header>
     
-    <div class="container-fluid h-100">
-      <div class="row min-vh-100">
-        <div class="col-md-3 bg-light">
-          <div class="mb-2 border-bottom border-dark border-3">
+    <div class="container-fluid">
+      <div class="row min-h-100">
+        <div class="col-md-3">
+          <div class="border-bottom border-dark border-3">
             <label for="searchInput" class="form-label my-1 fs-3 fw-bolder">Search for a City:</label>
-            <input type="text" placeholder="Enter city here" class="form-control mb-2 border-secondary" autocomplete="off" id="search-input">
+            <input type="text" placeholder="Enter city here" class="form-control mb-2 border-dark" autocomplete="off" id="search-input">
             <button type="button" class="w-100 btn btn-primary mt-2 mb-3" id="search-button">Search</button>
           </div>
           <div class="w-100 pb-3" id="search-history-container">
@@ -35,12 +35,12 @@
           <div class="row pt-5" id="error-div">
             <h2 class="font-weight-bolder fs-3" id="error">City not found</h2>
           </div>
-          <div class="row pt-3" id="current-forecast">
-            <div class="col-md-12 border border-secondary">
+          <div class="row pt-3 " id="current-forecast">
+            <div class="col-md-12 bg-white border border-dark">
               <div class="d-flex align-items-center pt-4" id="city-name-container">
                 <h2 class="font-weight-bold" id="city-name"></h2>
                 <div class="weather-image-container">
-                  <img alt="weather-image" id="weather-image" />
+                  <img alt="weather-image" class="bg-primary rounded-pill" id="weather-image" />
                 </div>
               </div>
               <div class="pb-4" id="current-weather-container">
@@ -56,10 +56,10 @@
             <h4 class="font-weight-bolder row">5-Day Forecast:</h4>
           </div>
           <div class="d-md-inline-flex justify-content-between row-md-12 g-0">
-            <div class="col-lg pb-2 me-3">
+            <div class="col-lg pb-2 me-2">
               <div class="card text-white bg-primary" id="day-1">
                 <div class="card-body">
-                  <h5 class="card-title" id="date-1"></h5>
+                  <h5 class="card-title fs-6" id="date-1"></h5>
                   <div class="weather-image-container">
                     <img alt="day-1-weather-image" id="weather-image-1" />
                   </div>
@@ -69,10 +69,10 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg pb-2 me-3">
+            <div class="col-lg pb-2 me-2">
               <div class="card text-white bg-primary" id="day-2">
                 <div class="card-body">
-                  <h5 class="card-title" id="date-2"></h5>
+                  <h5 class="card-title fs-6" id="date-2"></h5>
                   <div class="weather-image-container">
                     <img alt="day-2-weather-image" id="weather-image-2" />
                   </div>
@@ -82,10 +82,10 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg pb-2 me-3">
+            <div class="col-lg pb-2 me-2">
               <div class="card text-white bg-primary" id="day-3">
                 <div class="card-body">
-                  <h5 class="card-title" id="date-3"></h5>
+                  <h5 class="card-title fs-6" id="date-3"></h5>
                   <div class="weather-image-container">
                     <img alt="day-3-weather-image" id="weather-image-3" />
                   </div>
@@ -95,10 +95,10 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg pb-2 me-3">
+            <div class="col-lg pb-2 me-2">
               <div class="card text-white bg-primary" id="day-4">
                 <div class="card-body">
-                  <h5 class="card-title" id="date-4"></h5>
+                  <h5 class="card-title fs-6" id="date-4"></h5>
                   <div class="weather-image-container">
                     <img alt="day-4-weather-image" id="weather-image-4" />
                   </div>
@@ -108,10 +108,10 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg pb-2">
+            <div class="col-lg pb-2 me-2">
               <div class="card text-white bg-primary" id="day-5">
                 <div class="card-body">
-                  <h5 class="card-title" id="date-5"></h5>
+                  <h5 class="card-title fs-6" id="date-5"></h5>
                   <div class="weather-image-container">
                     <img alt="day-5-weather-image" id="weather-image-5" />
                   </div>

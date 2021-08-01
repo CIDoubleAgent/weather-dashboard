@@ -1,5 +1,5 @@
 var citySearch;
-var APIkey = '&appid=28870b55a52a06273a2463ffab2469f7';
+var APIkey = '&appid=f435c899986514624bda61a6f76cde46';
 var weatherAPI = 'https://api.openweathermap.org/data/2.5/weather?';
 var uviAPI = 'https://api.openweathermap.org/data/2.5/uvi?lat=';
 var forecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=';
@@ -21,7 +21,6 @@ $(document).ready(function() {
     displayHistory();
     clearHistory();
     clickHistory();
-    currentLocationButton();
   }
 
   function search() {
@@ -124,12 +123,14 @@ $(document).ready(function() {
           var forecastTemp = forecastResults.list[i].main.temp;
           var forecastHumidity = forecastResults.list[i].main.humidity;
           var forecastIcon = forecastResults.list[i].weather[0].icon;
+          var forecastSpeed = forecastResults.list[i].wind.speed;
 
           forecastObj['list'] = {};
           forecastObj['list']['date'] = forecastDate;
           forecastObj['list']['temp'] = forecastTemp;
           forecastObj['list']['humidity'] = forecastHumidity;
           forecastObj['list']['icon'] = forecastIcon;
+          forecastObj['list']['speed'] = forecastSpeed;
 
           forecastArr.push(forecastObj);
         }
@@ -140,78 +141,22 @@ $(document).ready(function() {
             getWeatherIcon + forecastArr[j].list.icon + '.png';
           var forecastArrTemp = Math.floor(forecastArr[j].list.temp);
           var forecastArrHumidity = forecastArr[j].list.humidity;
+          var forecastArrSpeed = Math.floor(forecastArr[j].list.speed);
 
           $('#date-' + (j + 1)).text(forecastArrDate);
           $('#weather-image-' + (j + 1)).attr('src', forecastIconURL);
           $('#temp-' + (j + 1)).text(
             'Temp: ' + Math.floor(forecastArrTemp) + ' °F'
           );
+          $('#wind-' + (j + 1)).text(
+            'Wind Speed: ' + forecastArrSpeed + ' MPH'
+          )
           $('#humidity-' + (j + 1)).text(
             'Humidity: ' + forecastArrHumidity + '%'
           );
         }
         $('#weather-container').show();
       });
-    });
-  }
-
-  function getCurrentLocation() {
-    function success(position) {
-      const currentLat = position.coords.latitude;
-      const currentLon = position.coords.longitude;
-      var currentLocationQueryURL =
-        weatherAPI +
-        'lat=' +
-        currentLat +
-        '&lon=' +
-        currentLon +
-        units +
-        APIkey;
-
-      $.ajax({
-        url: currentLocationQueryURL,
-        method: 'GET'
-      }).then(function(currentLocationResponse) {
-        var currentLocationResults = currentLocationResponse;
-        var currentLocationName = currentLocationResults.name;
-        var currentLocationTemp = currentLocationResults.main.temp;
-        var currentLocationHumidity = currentLocationResults.main.humidity;
-        var currentLocationIcon = currentLocationResults.weather[0].icon;
-        var currentLocationIconURL =
-          getWeatherIcon + currentLocationIcon + '.png';
-
-        $('#current-location').text(currentLocationName);
-        $('#weather-image-current-location').attr(
-          'src',
-          currentLocationIconURL
-        );
-        $('#temp-current-location').html(
-          '<b>Temperature: </b>' + currentLocationTemp + ' °F'
-        );
-        $('#humidity-current-location').html(
-          '<b>Humidity: </b>' + currentLocationHumidity + '%'
-        );
-      });
-
-      $('#current-location-weather').show();
-    }
-
-    function error() {
-      $('#current-location').text('Cannot get your current location.');
-    }
-
-    if (!geoAPI) {
-      $('#current-location').text(
-        'Geolocation is not supported by your browser'
-      );
-    } else {
-      geoAPI.getCurrentPosition(success, error);
-    }
-  }
-
-  function currentLocationButton() {
-    $('#current-location-button').on('click', function() {
-      getCurrentLocation();
     });
   }
 
@@ -227,7 +172,7 @@ $(document).ready(function() {
         ({ city }) => city === citySearchName
       );
 
-      if (searchHistoryArr.length < 5) {
+      if (searchHistoryArr.length < 6) {
         if (checkHistory === undefined) {
           searchHistoryObj['city'] = citySearchName;
           searchHistoryArr.push(searchHistoryObj);
@@ -264,7 +209,7 @@ $(document).ready(function() {
 
     for (var i = 0; i < localSearchHistory.length; i++) {
       var historyLi = $('<li>');
-      historyLi.addClass('list-group-item');
+      historyLi.addClass('list-group-item bg-secondary highlight text-light text-center rounded-2 mt-3');
       historyLi.text(localSearchHistory[i].city);
       $('#search-history').prepend(historyLi);
       $('#search-history-container').show();
@@ -278,7 +223,7 @@ $(document).ready(function() {
   }
 
   function clearHistory() {
-    $('#clear-button').on('click', function() {
+    (function() {
       $('#search-history').empty();
       $('#search-history-container').hide();
       localStorage.removeItem('searchHistory');

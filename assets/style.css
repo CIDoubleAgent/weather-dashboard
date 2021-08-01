@@ -1,9 +1,27 @@
 body {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0px;
-    padding: 0px;
 }
 
 .header {
     background-image: linear-gradient(to right, rgb(71, 71, 241), indigo);
+}
+
+.list-group-item {
+    cursor: pointer;
+}
+
+#day-1,
+#day-2,
+#day-3,
+#day-4,
+#day-5 {
+    background-image: linear-gradient(to right, rgb(71, 71, 241), indigo);
+}
+
+.btn {
+    background-image: linear-gradient(to right, rgb(71, 71, 241), indigo);
+}
+
+#weather-image {
+    margin-left: 1rem;
 }
