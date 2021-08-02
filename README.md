@@ -13,3 +13,6 @@ https://cidoubleagent.github.io/weather-dashboard/
 https://github.com/CIDoubleAgent/weather-dashboard
 
 ## Screenshots
+![Weather-Dash-1](https://github.com/CIDoubleAgent/weather-dashboard/blob/main/images/Weather%20Dash%201.png?raw=true)
+
+![Weather-Dash-2](https://github.com/CIDoubleAgent/weather-dashboard/blob/main/images/Weather%20Dash%202.png?raw=true)
