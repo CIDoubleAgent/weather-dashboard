@@ -11,6 +11,8 @@ let humid = document.querySelector('#humidity');
 let windSpd = document.querySelector('#wind-speed');
 let uv = document.querySelector('#uv-index');
 
-fetch(geocodingAPI + inputVal + APIKey)
+searchButton.addEventListener('click', function() {
+  fetch(geocodingAPI + inputVal + APIKey)
   .then(response => response.json())
   .then(data => console.log(data));
+});
