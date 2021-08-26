@@ -5,7 +5,7 @@ const geocodingAPI = 'http://api.openweathermap.org/geo/1.0/direct?q=';
 const todaysDate = moment().format("(MM/DD/YYYY)");
 
 const searchButton = document.querySelector('#search-button');
-const input = document.querySelector('#input-val');
+let input = document.querySelector('#input-val');
 const temp = document.querySelector('#temperature');
 const humid = document.querySelector('#humidity');
 const windSpd = document.querySelector('#wind-speed');
