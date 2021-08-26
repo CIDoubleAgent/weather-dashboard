@@ -5,7 +5,6 @@ const geocodingAPI = 'http://api.openweathermap.org/geo/1.0/direct?q=';
 
 const searchButton = document.querySelector('#search-button');
 let input = document.querySelector('#input-val');
-let weatherImgEl = document.querySelector('#weather-image');
 let temp = document.querySelector('#temperature');
 let humid = document.querySelector('#humidity');
 let windSpd = document.querySelector('#wind-speed');
@@ -30,8 +29,9 @@ searchButton.addEventListener('click', function () {
       let humidVal = data.current.humidity;
       let windSpdVal = data.current.wind_speed;
       let uviVal = data.current.uvi;
-
+      let weatherImgSrc = 'http://openweathermap.org/img/wn/' + weatherIconVal + '.png';
       console.log(weatherIconVal);
+      console.log(weatherImgSrc);
       console.log(tempVal);
       console.log(humidVal);
       console.log(windSpdVal);
@@ -39,7 +39,7 @@ searchButton.addEventListener('click', function () {
 
 
 
-      weatherImgEl.innerHTML = weatherIconImg;
+      $('#weather-image').attr('src', weatherImgSrc);
       temp.innerHTML = 'Temperature: ' + tempVal + '° F';
       humid.innerHTML = 'Humidity: ' + humidVal + ' %';
       windSpd.innerHTML = 'Wind Speed: ' + windSpdVal + ' MPH';
