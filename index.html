@@ -37,16 +37,16 @@
           </div>
           <div class="row pt-3 " id="current-forecast">
             <div class="col-md-12 bg-white border border-dark">
-              <div class="d-flex align-items-center pt-4" id="city-name-container">
-                <h2 class="font-weight-bold" id="city-name"></h2>
+              <div class="d-flex align-items-center pt-4" id="name-date-icon">
+                <h2 class="font-weight-bold" id="name-date"></h2>
                 <div class="weather-image-container">
                   <img alt="weather-image" class="bg-primary rounded-pill" id="weather-image" />
                 </div>
               </div>
               <div class="pb-4" id="current-weather-container">
                 <div id="temperature"></div>
-                <div id="humidity"></div>
                 <div id="wind-speed"></div>
+                <div id="humidity"></div>
                 <div id="uv-index"></div>
               </div>
             </div>
@@ -126,6 +126,7 @@
       </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.4.1.js"
       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
