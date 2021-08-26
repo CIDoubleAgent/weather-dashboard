@@ -5,17 +5,22 @@ const geocodingAPI = 'http://api.openweathermap.org/geo/1.0/direct?q=';
 const todaysDate = moment().format("(MM/DD/YYYY)");
 
 const searchButton = document.querySelector('#search-button');
-let input = document.querySelector('#input-val');
-let temp = document.querySelector('#temperature');
-let humid = document.querySelector('#humidity');
-let windSpd = document.querySelector('#wind-speed');
-let uvi = document.querySelector('#uv-index');
-let nameDate = document.querySelector('#name-date');
+const input = document.querySelector('#input-val');
+const temp = document.querySelector('#temperature');
+const humid = document.querySelector('#humidity');
+const windSpd = document.querySelector('#wind-speed');
+const uvi = document.querySelector('#uv-index');
+const nameDate = document.querySelector('#name-date');
+const errMsg = $('#error-wrapper');
+const currentDsply = $('#current-forecast');
+const fiveDayDsply = $('#five-day-container');
 
 $(document).ready(function() {
 
   function init() {
-    $('#error-div').hide();
+    currentDsply.hide();
+    fiveDayDsply.hide();
+    errMsg.hide();
   }
 
   init();
@@ -59,8 +64,22 @@ $(document).ready(function() {
         uvi.innerHTML = 'UVI Index: ' + uviVal;
   
       })
-      .catch(err => console.error(err + 'An error has occurred'));
-  
+      .then(function () {
+        currentDsply.show();
+        fiveDayDsply.show();
+        errMsg.hide();
+      })
+      .catch(err => {
+        errMsg.show();
+        console.error(err + 'An error has occurred')
+      });
+      
+    })
+    .catch(err => {
+      currentDsply.hide();
+      fiveDayDsply.hide();
+      errMsg.show();
+      console.error(err + 'City not found')
     });
   
   });
