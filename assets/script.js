@@ -1,7 +1,7 @@
 const APIKey = '&appid=37fdc1aba69032506199f3d6a944d491';
 const units = '&units=imperial'
 const onecallAPI = 'https://api.openweathermap.org/data/2.5/onecall?';
-const geocodingAPI = 'http://api.openweathermap.org/geo/1.0/direct?q=';
+const geocodingAPI = 'https://api.openweathermap.org/geo/1.0/direct?q=';
 const todaysDate = moment().format("(MM/DD/YYYY)");
 const date1Val = moment().add(1, 'days').format("MM/DD/YYYY")
 const date2Val = moment().add(2, 'days').format("MM/DD/YYYY")
