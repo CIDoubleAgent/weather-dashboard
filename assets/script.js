@@ -124,31 +124,43 @@ $(document).ready(function() {
         temp.innerHTML = 'Temperature: ' + Math.floor(tempVal) + '° F';
         windSpd.innerHTML = 'Wind Speed: ' + windSpdVal + ' MPH';
         humid.innerHTML = 'Humidity: ' + humidVal + ' %';
-        uvi.innerHTML = 'UV Index: ' + uviVal;
+        uvi.innerHTML = uviVal;
+
+      
+        if (uviVal < 4) {
+          $("#uv-index").attr('class', 'badge bg-success');
+        } else if (uviVal < 8) {
+          $("#uv-index").attr('class', 'badge bg-warning');
+        } else {
+          $("#uv-index").attr('class', 'badge bg-danger');
+        }
+        
+
+    
 
         $('#weather-image-1').attr('src', weatherImgSrc1);
         temp1.innerHTML = 'Temp: ' + Math.floor(tempVal1) + '° F';
-        windSpd1.innerHTML = 'Wind: ' + windSpdVal1 + ' MPH';
+        windSpd1.innerHTML = 'Wind: ' + Math.floor(windSpdVal1) + ' MPH';
         humid1.innerHTML = 'Humidity: ' + humidVal1 + ' %';
         
         $('#weather-image-2').attr('src', weatherImgSrc2);
         temp2.innerHTML = 'Temp: ' + Math.floor(tempVal2) + '° F';
-        windSpd2.innerHTML = 'Wind: ' + windSpdVal2 + ' MPH';
+        windSpd2.innerHTML = 'Wind: ' + Math.floor(windSpdVal2) + ' MPH';
         humid2.innerHTML = 'Humidity: ' + humidVal2 + ' %';
         
         $('#weather-image-3').attr('src', weatherImgSrc3);
         temp3.innerHTML = 'Temp: ' + Math.floor(tempVal3) + '° F';
-        windSpd3.innerHTML = 'Wind: ' + windSpdVal3 + ' MPH';
+        windSpd3.innerHTML = 'Wind: ' + Math.floor(windSpdVal3) + ' MPH';
         humid3.innerHTML = 'Humidity: ' + humidVal3 + ' %';
         
         $('#weather-image-4').attr('src', weatherImgSrc4);
         temp4.innerHTML = 'Temp: ' + Math.floor(tempVal4) + '° F';
-        windSpd4.innerHTML = 'Wind: ' + windSpdVal4 + ' MPH';
+        windSpd4.innerHTML = 'Wind: ' + Math.floor(windSpdVal4) + ' MPH';
         humid4.innerHTML = 'Humidity: ' + humidVal4+ ' %';
         
         $('#weather-image-5').attr('src', weatherImgSrc5);
         temp5.innerHTML = 'Temp: ' + Math.floor(tempVal5) + '° F';
-        windSpd5.innerHTML = 'Wind: ' + windSpdVal5 + ' MPH';
+        windSpd5.innerHTML = 'Wind: ' + Math.floor(windSpdVal5) + ' MPH';
         humid5.innerHTML = 'Humidity: ' + humidVal5 + ' %';
 
       })
@@ -159,7 +171,7 @@ $(document).ready(function() {
       })
       .catch(err => {
         errMsg.show();
-        console.error(err + 'An error has occurred')
+        console.error(err + ' | An error has occurred');
       });
       
     })
@@ -167,7 +179,7 @@ $(document).ready(function() {
       currentDsply.hide();
       fiveDayDsply.hide();
       errMsg.show();
-      console.error(err + 'City not found')
+      console.error((err) + ' | Error, city not found');
     });
   
   });
