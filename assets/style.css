@@ -18,10 +18,6 @@ body {
     background-image: linear-gradient(to right, rgb(71, 71, 241), indigo);
 }
 
-.btn {
-    background-image: linear-gradient(to right, rgb(71, 71, 241), indigo);
-}
-
 #weather-image {
     margin-left: 1rem;
 }

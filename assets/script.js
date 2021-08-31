@@ -10,7 +10,7 @@ const date4Val = moment().add(4, 'days').format("MM/DD/YYYY")
 const date5Val = moment().add(5, 'days').format("MM/DD/YYYY")
 
 const searchButton = document.querySelector('#search-button');
-let input = document.querySelector('#input-val');
+const searchHistory = document.getElementById('search-history');
 
 const nameDate = document.querySelector('#name-date');
 const temp = document.querySelector('#temperature');
@@ -46,6 +46,7 @@ const windSpd5 = document.querySelector('#wind-speed-5');
 const errMsg = $('#error-wrapper');
 const currentDsply = $('#current-forecast');
 const fiveDayDsply = $('#five-day-container');
+const storageKey = 'citySearchTerms';
 
 $(document).ready(function() {
 
@@ -57,8 +58,62 @@ $(document).ready(function() {
 
   init();
 
+
+  function saveToStorage(city) {
+    let storage = localStorage.getItem(storageKey);
+    if (storage) {
+      console.log(storage);
+      let storedData = JSON.parse(storage);
+      storedData.push(city);
+      localStorage.setItem(storageKey, JSON.stringify(storedData));
+      console.log(storedData);
+    } else {
+      let cityArr = [city];
+      localStorage.setItem(storageKey, JSON.stringify(cityArr));
+    }
+  }
+
+  function generateSearchButtons() {
+    let storage = localStorage.getItem(storageKey);
+    if (storage) {
+      let storedData = JSON.parse(storage);
+      storedData.forEach((city, i) => {
+        generateButton(city, i);
+      });
+    }
+  }
+
+  generateSearchButtons();
+
+  function generateButton(city, id) {
+    let btnClasses = ['btn', 'btn-secondary', 'border-rounded', 'mt-3', 'executeSearch']
+    let button = document.createElement('button');
+    button.setAttribute('id', `executeSerch-${id}`);
+    button.dataset.term = city;
+    button.dataset.id = id;
+    button.textContent = city;
+    button.classList.add(...btnClasses);
+    searchHistory.appendChild(button);
+
+  }
+  
+  const input = document.querySelector('#input-val');
   searchButton.addEventListener('click', function () {
-    fetch(geocodingAPI + input.value + APIKey)
+    getWeatherData(input.value);
+  });
+  
+  
+  document.addEventListener('click', (e) => {
+    if (e.target.id.includes('execute')){
+      console.log(e.target.id);
+      console.log(e.target.dataset);
+      getWeatherData(e.target.dataset.term)
+    }
+   
+  })
+
+  function getWeatherData (searchTerm) {
+    fetch(geocodingAPI + searchTerm + APIKey)
     .then(response => response.json())
     .then(data => {
       console.log(data[0].lat + ',' + data[0].lon);
@@ -77,11 +132,16 @@ $(document).ready(function() {
       date4.innerHTML = date4Val;
       date5.innerHTML = date5Val;
 
-  
+ 
       fetch(onecallAPI + 'lat=' + latitude + '&lon=' + longitude + units + APIKey)
       .then(response => response.json())
       .then(data => {
         console.log(data);
+        // TODO insert search term into local storage
+        if (input.value.length > 0) {
+          saveToStorage(input.value.toLowerCase());
+          generateButton(input.value.toLowerCase(), Math.floor(Math.random() * 1000));
+        }
   
         let weatherIconVal = data.current.weather[0].icon;
         let tempVal = data.current.temp;
@@ -135,9 +195,6 @@ $(document).ready(function() {
           $("#uv-index").attr('class', 'badge bg-danger');
         }
         
-
-    
-
         $('#weather-image-1').attr('src', weatherImgSrc1);
         temp1.innerHTML = 'Temp: ' + Math.floor(tempVal1) + '° F';
         windSpd1.innerHTML = 'Wind: ' + Math.floor(windSpdVal1) + ' MPH';
@@ -181,6 +238,8 @@ $(document).ready(function() {
       errMsg.show();
       console.error((err) + ' | Error, city not found');
     });
-  
-  });
+  }
 });
+
+
+ 
