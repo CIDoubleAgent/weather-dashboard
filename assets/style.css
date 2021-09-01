@@ -3,11 +3,31 @@ body {
 }
 
 .header {
-    background-image: linear-gradient(to right, rgb(71, 71, 241), indigo);
+    background-image: linear-gradient(to right, #0d6efd, #042049);
 }
 
 .list-group-item {
     cursor: pointer;
+}
+
+#day-1 {
+    background-color: #0d63e6;
+}
+
+#day-2 {
+    background-color: #0c54be;
+}
+
+#day-3 {
+    background-color: #0b469e;
+}
+
+#day-4 {
+    background-color: #083475;
+}
+
+#day-5 {
+    background-color: #052758;
 }
 
 #weather-image {

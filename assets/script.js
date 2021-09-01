@@ -215,11 +215,11 @@ $(document).ready(function() {
 
       
         if (uviVal < 4) {
-          $("#uv-index").attr('class', 'badge bg-success');
+          $("#uv-index").attr('class', 'badge bg-success rounded-pill d-flex align-items-center');
         } else if (uviVal < 8) {
-          $("#uv-index").attr('class', 'badge bg-warning');
+          $("#uv-index").attr('class', 'badge bg-warning rounded-pill d-flex align-items-center');
         } else {
-          $("#uv-index").attr('class', 'badge bg-danger');
+          $("#uv-index").attr('class', 'badge bg-danger rounded-pill d-flex align-items-center');
         }
         
         $('#weather-image-1').attr('src', weatherImgSrc1);
