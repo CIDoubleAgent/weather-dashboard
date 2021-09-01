@@ -88,7 +88,7 @@ $(document).ready(function() {
   function generateButton(city, id) {
     let btnClasses = ['btn', 'btn-secondary', 'border-rounded', 'mt-3', 'executeSearch']
     let button = document.createElement('button');
-    button.setAttribute('id', `executeSerch-${id}`);
+    button.setAttribute('id', `executeSearch-${id}`);
     button.dataset.term = city;
     button.dataset.id = id;
     button.textContent = city;
