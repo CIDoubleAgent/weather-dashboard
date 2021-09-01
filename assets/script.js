@@ -71,7 +71,9 @@ $(document).ready(function() {
 
 
   function saveToStorage(city) {
+    
     let storage = localStorage.getItem(storageKey);
+
     if (storage) {
       console.log(storage);
       let storedData = JSON.parse(storage);
@@ -85,7 +87,9 @@ $(document).ready(function() {
   }
 
   function generateSearchButtons() {
+
     let storage = localStorage.getItem(storageKey);
+
     if (storage) {
       let storedData = JSON.parse(storage);
       storedData.forEach((city, i) => {
@@ -103,19 +107,26 @@ $(document).ready(function() {
     button.dataset.term = city;
     button.dataset.id = id;
     button.textContent = city;
+    console.log(city);
     button.classList.add(...btnClasses);
     searchHistory.appendChild(button);
 
   }
   
   const input = document.querySelector('#input-val');
+
+  input.addEventListener('click', function () {
+    input.value = '';
+  });
+
   searchButton.addEventListener('click', function () {
     getWeatherData(input.value);
   });
   
   
   document.addEventListener('click', (e) => {
-    if (e.target.id.includes('execute')){
+
+    if (e.target.id.includes('executeSearch')){
       console.log(e.target.id);
       console.log(e.target.dataset);
       getWeatherData(e.target.dataset.term)
@@ -124,8 +135,11 @@ $(document).ready(function() {
   })
 
   function getWeatherData (searchTerm) {
+
     fetch(geocodingAPI + searchTerm + APIKey)
+
     .then(response => response.json())
+
     .then(data => {
       console.log(data[0].lat + ',' + data[0].lon);
       console.log(todaysDate);
@@ -145,10 +159,12 @@ $(document).ready(function() {
 
  
       fetch(onecallAPI + 'lat=' + latitude + '&lon=' + longitude + units + APIKey)
+      
       .then(response => response.json())
+
       .then(data => {
         console.log(data);
-        // TODO insert search term into local storage
+
         if (input.value.length > 0) {
           saveToStorage(input.value.toLowerCase());
           generateButton(input.value.toLowerCase(), Math.floor(Math.random() * 1000));
