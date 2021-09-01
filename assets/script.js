@@ -48,6 +48,17 @@ const currentDsply = $('#current-forecast');
 const fiveDayDsply = $('#five-day-container');
 const storageKey = 'citySearchTerms';
 
+const searchHistoryCont = document.querySelector('#search-history-container');
+
+function clearFunction () {
+  localStorage.citySearchTerms = [];
+  refresh();
+}
+
+function refresh () {
+  location.reload();
+}
+
 $(document).ready(function() {
 
   function init() {
